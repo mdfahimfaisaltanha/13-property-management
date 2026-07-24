@@ -30,7 +30,7 @@ Sign in with `ADMIN_PASSWORD`. The seed produces a lived-in portfolio on day one
 | Maintenance | `app/api/portal/maintenance/route.ts` | open → in_progress → resolved, priority-sorted (emergency first), tenant auto-attached from the active lease |
 | Seed | `scripts/setup.mjs` | Idempotent; leases/invoices in every state so every screen has data |
 
-## Rent engine (interview talking points)
+## Rent engine
 
 **Idempotent billing.** Invoices are `UNIQUE(lease_id, period)` and generation inserts with `ON CONFLICT DO NOTHING` — the “Generate this month's invoices” button (or a cron hitting the same endpoint) can run any number of times without double-billing. Re-run count is reported honestly (`created: 0` the second time).
 
